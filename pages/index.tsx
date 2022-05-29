@@ -3,8 +3,9 @@ import NavBar from '@components/NavBar';
 
 
 const Home:FC = () => { 
-  return (
+return (
     <div>
+      <p>Hello, World</p>
     </div>
   )
 }
