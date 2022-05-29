@@ -24,6 +24,6 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.3.0
       with:
-        server: ftp://svacmai.xyz
+        server: ftp.svacmai.xyz
         username: ${{ secrets.username }}
         password: ${{ secrets.password }}
