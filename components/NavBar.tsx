@@ -1,4 +1,6 @@
-/* import Button from '@components/button'
+import Button from '@components/button'
+import { useState } from 'react'
+import Circle_Circle from './circle'
 
 const NavBar = () => {
   const [page, setPage] = useState(1)
@@ -33,10 +35,11 @@ const NavBar = () => {
   )
 }
 
-export default NavBar */
-
+export default NavBar
+/* 
 const NavBar = () => {
   return <></>
 }
 
 export default NavBar
+ */
