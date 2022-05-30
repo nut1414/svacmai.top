@@ -4,8 +4,16 @@ const { parse } = require('url')
 const next = require('next')
 
 const dev = process.env.NODE_ENV !== 'production'
-const hostname = 'localhost'
-const port = 3000
+const hostname = process.env.HOSTNAME || 'localhost'
+const port = process.env.PORT || 3000
+
+if (process.env.NODE_ENV === 'production') {
+  if (hostname === 'localhost') {
+    console.error('Please set HOSTNAME environment variable to your hostname')
+    process.exit(1)
+  }
+}
+
 // when using middleware `hostname` and `port` must be provided below
 const app = next({ dev, hostname, port })
 const handle = app.getRequestHandler()
