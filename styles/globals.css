@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'MaiLog';
+  src: url('../font/MaiLog/MaiLog.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'MaiLog NF';
+  src: url('../font/MaiLog/MaiLog_Nerd_Font_Plus_Font_Awesome_Plus_Font_Awesome_Extension_Plus_Octicons_Plus_Power_Symbols_Plus_Pomicons_Plus_Font_Logos_Font_Linux_Plus_Material_Design_Icons_Plus_Weather_Icons_Mono.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
