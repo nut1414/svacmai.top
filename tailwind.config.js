@@ -4,7 +4,10 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
+    fontFamily: {
+      MaiLog: ['MaiLog', 'MaiLog NF', 'sans-serif'],
+    },
     extend: {},
   },
-  plugins: [],
+  plugins: [require('tw-elements/dist/plugin')],
 }
