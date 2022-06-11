@@ -10,6 +10,7 @@ import {
 import words from '../data/wordle/words.json'
 import { WordFormType, MatchWord } from 'types'
 import { RiLoader4Fill } from 'react-icons/ri'
+import { HiOutlineInformationCircle } from 'react-icons/hi'
 
 const FindWord: FC = () => {
   const [matchWord, setMatchWord] = useState<MatchWord>({ wordleWord: [] })
@@ -28,7 +29,8 @@ const FindWord: FC = () => {
   //
   const checkNoLetter = (e: ChangeEvent<HTMLInputElement>) => {
     let repeteLetter: boolean = false
-    word.noLetter.forEach((letter) => {
+    const noLetter = word.noLetter
+    noLetter.forEach((letter) => {
       if (letter === e.target.value[e.target.value.length - 1]) {
         // delete last letter from noLetter
         repeteLetter = true
@@ -39,7 +41,8 @@ const FindWord: FC = () => {
 
   const checkHasLetter = (e: ChangeEvent<HTMLInputElement>) => {
     let repeteLetter: boolean = false
-    word.hasLetter.forEach((letter) => {
+    const hasLetter = word.hasLetter
+    hasLetter.forEach((letter) => {
       if (letter === e.target.value[e.target.value.length - 1]) {
         // delete last letter from noLetter
         repeteLetter = true
@@ -167,8 +170,9 @@ const FindWord: FC = () => {
         <title>Find Word</title>
       </Head>
       <main className="min-h-screen w-full bg-neutral-900 p-4 px-14 font-MaiLog text-white">
-        <h1 className="mb-8 flex w-full items-center justify-center text-2xl">
-          Find Word
+        <h1 className="mb-8 flex w-full items-center justify-center text-2xl gap-2">
+          <span>Find Word</span>
+          <HiOutlineInformationCircle className="h-full" />
         </h1>
         <form
           onSubmit={handleSubmit}
@@ -205,7 +209,7 @@ const FindWord: FC = () => {
             />
           </div>
           {/* NOTE - input text */}
-          <div className="flex flex-row gap-2 justify-between">
+          <div className="flex flex-row justify-between gap-2">
             {/* letter1 */}
             <input
               type="text"
@@ -218,7 +222,7 @@ const FindWord: FC = () => {
                   letter1: e.target.value.toLocaleLowerCase(),
                 })
               }
-              className="focus:shadow-outline text-xl w-11 appearance-none rounded bg-neutral-700 py-2 px-3 leading-tight text-neutral-300 shadow focus:outline-none"
+              className="focus:shadow-outline w-11 appearance-none rounded bg-neutral-700 py-2 px-3 text-xl leading-tight text-neutral-300 shadow focus:outline-none"
             />
             {/* letter2 */}
             <input
@@ -232,7 +236,7 @@ const FindWord: FC = () => {
                   letter2: e.target.value.toLocaleLowerCase(),
                 })
               }
-              className="focus:shadow-outline text-xl w-11 appearance-none rounded bg-neutral-700 py-2 px-3 leading-tight text-neutral-300 shadow focus:outline-none"
+              className="focus:shadow-outline w-11 appearance-none rounded bg-neutral-700 py-2 px-3 text-xl leading-tight text-neutral-300 shadow focus:outline-none"
             />
             {/* letter3 */}
             <input
@@ -246,7 +250,7 @@ const FindWord: FC = () => {
                   letter3: e.target.value.toLocaleLowerCase(),
                 })
               }
-              className="focus:shadow-outline text-xl w-11 appearance-none rounded bg-neutral-700 py-2 px-3 leading-tight text-neutral-300 shadow focus:outline-none"
+              className="focus:shadow-outline w-11 appearance-none rounded bg-neutral-700 py-2 px-3 text-xl leading-tight text-neutral-300 shadow focus:outline-none"
             />
             {/* letter4 */}
             <input
@@ -260,7 +264,7 @@ const FindWord: FC = () => {
                   letter4: e.target.value.toLocaleLowerCase(),
                 })
               }
-              className="focus:shadow-outline text-xl w-11 appearance-none rounded bg-neutral-700 py-2 px-3 leading-tight text-neutral-300 shadow focus:outline-none"
+              className="focus:shadow-outline w-11 appearance-none rounded bg-neutral-700 py-2 px-3 text-xl leading-tight text-neutral-300 shadow focus:outline-none"
             />
             {/* letter5 */}
             <input
@@ -274,7 +278,7 @@ const FindWord: FC = () => {
                   letter5: e.target.value.toLocaleLowerCase(),
                 })
               }
-              className="focus:shadow-outline text-xl w-11 appearance-none rounded bg-neutral-700 py-2 px-3 leading-tight text-neutral-300 shadow focus:outline-none"
+              className="focus:shadow-outline w-11 appearance-none rounded bg-neutral-700 py-2 px-3 text-xl leading-tight text-neutral-300 shadow focus:outline-none"
             />
           </div>
           {/* NOTE - submit button */}
@@ -293,7 +297,7 @@ const FindWord: FC = () => {
           ''
         )}
         {/* NOTE - show word match */}
-        <div className="flex flex-wrap gap-2 justify-between justify-items-stretch">
+        <div className="flex flex-wrap justify-between justify-items-stretch gap-2">
           {matchWord.wordleWord.map((w) => (
             <div
               key={w}
