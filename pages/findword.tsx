@@ -166,17 +166,17 @@ const FindWord: FC = () => {
       <Head>
         <title>Find Word</title>
       </Head>
-      <main className="min-h-screen w-full bg-stone-900 p-4 px-14 font-MaiLog text-white">
+      <main className="min-h-screen w-full bg-neutral-900 p-4 px-14 font-MaiLog text-white">
         <h1 className="mb-8 flex w-full items-center justify-center text-2xl">
           Find Word
         </h1>
         <form
           onSubmit={handleSubmit}
-          className="mb-4 flex w-fit flex-col gap-4 rounded-md bg-stone-400 p-4"
+          className="mb-4 flex w-fit flex-col gap-4 rounded-md bg-neutral-400 p-4"
         >
           {/* NOTE - noLetter */}
           <div>
-            <p className="mb-1 text-stone-800">
+            <p className="mb-1 text-neutral-800">
               letters that doen't have in word.
             </p>
             <input
@@ -187,12 +187,12 @@ const FindWord: FC = () => {
                 checkLetter(e)
                 checkNoLetterDelete(e)
               }}
-              className="focus:shadow-outline w-full  appearance-none rounded bg-stone-700 py-2 px-3 leading-tight text-stone-300 shadow focus:outline-none"
+              className="focus:shadow-outline w-full  appearance-none rounded bg-neutral-700 py-2 px-3 leading-tight text-neutral-300 shadow focus:outline-none"
             />
           </div>
           {/* NOTE - hasLetter */}
           <div>
-            <p className="mb-1 text-stone-800">letters that have in word.</p>
+            <p className="mb-1 text-neutral-800">letters that have in word.</p>
             <input
               type="text"
               id="hasLetter"
@@ -201,11 +201,11 @@ const FindWord: FC = () => {
                 checkLetter(e)
                 checkHasLetterDelete(e)
               }}
-              className="focus:shadow-outline w-full  appearance-none rounded bg-stone-700 py-2 px-3 leading-tight text-stone-300 shadow focus:outline-none"
+              className="focus:shadow-outline w-full  appearance-none rounded bg-neutral-700 py-2 px-3 leading-tight text-neutral-300 shadow focus:outline-none"
             />
           </div>
           {/* NOTE - input text */}
-          <div className="flex flex-row gap-2">
+          <div className="flex flex-row gap-2 justify-between">
             {/* letter1 */}
             <input
               type="text"
@@ -218,7 +218,7 @@ const FindWord: FC = () => {
                   letter1: e.target.value.toLocaleLowerCase(),
                 })
               }
-              className="focus:shadow-outline w-10 appearance-none rounded bg-stone-700 py-2 px-3 leading-tight text-stone-300 shadow focus:outline-none"
+              className="focus:shadow-outline text-xl w-11 appearance-none rounded bg-neutral-700 py-2 px-3 leading-tight text-neutral-300 shadow focus:outline-none"
             />
             {/* letter2 */}
             <input
@@ -232,7 +232,7 @@ const FindWord: FC = () => {
                   letter2: e.target.value.toLocaleLowerCase(),
                 })
               }
-              className="focus:shadow-outline w-10 appearance-none rounded bg-stone-700 py-2 px-3 leading-tight text-stone-300 shadow focus:outline-none"
+              className="focus:shadow-outline text-xl w-11 appearance-none rounded bg-neutral-700 py-2 px-3 leading-tight text-neutral-300 shadow focus:outline-none"
             />
             {/* letter3 */}
             <input
@@ -246,7 +246,7 @@ const FindWord: FC = () => {
                   letter3: e.target.value.toLocaleLowerCase(),
                 })
               }
-              className="focus:shadow-outline w-10 appearance-none rounded bg-stone-700 py-2 px-3 leading-tight text-stone-300 shadow focus:outline-none"
+              className="focus:shadow-outline text-xl w-11 appearance-none rounded bg-neutral-700 py-2 px-3 leading-tight text-neutral-300 shadow focus:outline-none"
             />
             {/* letter4 */}
             <input
@@ -260,7 +260,7 @@ const FindWord: FC = () => {
                   letter4: e.target.value.toLocaleLowerCase(),
                 })
               }
-              className="focus:shadow-outline w-10 appearance-none rounded bg-stone-700 py-2 px-3 leading-tight text-stone-300 shadow focus:outline-none"
+              className="focus:shadow-outline text-xl w-11 appearance-none rounded bg-neutral-700 py-2 px-3 leading-tight text-neutral-300 shadow focus:outline-none"
             />
             {/* letter5 */}
             <input
@@ -274,20 +274,20 @@ const FindWord: FC = () => {
                   letter5: e.target.value.toLocaleLowerCase(),
                 })
               }
-              className="focus:shadow-outline w-10 appearance-none rounded bg-stone-700 py-2 px-3 leading-tight text-stone-300 shadow focus:outline-none"
+              className="focus:shadow-outline text-xl w-11 appearance-none rounded bg-neutral-700 py-2 px-3 leading-tight text-neutral-300 shadow focus:outline-none"
             />
           </div>
           {/* NOTE - submit button */}
           <input
             type="submit"
             value="Check"
-            className="rounded-md bg-stone-500  p-1 px-2 text-lg text-stone-900 transition duration-150 ease-in-out hover:bg-stone-700 hover:text-stone-400"
+            className="rounded-md bg-neutral-500  p-1 px-2 text-lg text-neutral-900 transition duration-150 ease-in-out hover:bg-neutral-700 hover:text-neutral-400"
           />
         </form>
         {/* NOTE - loading */}
         {loading ? (
           <div className="flex items-center justify-center">
-            <RiLoader4Fill className="h-1/5 w-1/5 animate-spin fill-stone-700" />
+            <RiLoader4Fill className="h-1/5 w-1/5 animate-spin fill-neutral-700" />
           </div>
         ) : (
           ''
@@ -297,7 +297,7 @@ const FindWord: FC = () => {
           {matchWord.wordleWord.map((w) => (
             <div
               key={w}
-              className="flex cursor-default items-center justify-center rounded-md bg-stone-400 px-2 py-1 text-stone-700 transition duration-100 ease-in-out hover:bg-stone-900 hover:text-stone-300"
+              className="flex cursor-default items-center justify-center rounded-md bg-neutral-400 px-2 py-1 text-neutral-700 transition duration-100 ease-in-out hover:bg-neutral-900 hover:text-neutral-300"
             >
               {w}
             </div>
