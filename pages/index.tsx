@@ -10,6 +10,7 @@ return (
       </Head>
         <NavBar />
       <p>Hello, World</p>
+      <div><p>Deplayment test</p></div>
     </Fragment>
   )
 }
