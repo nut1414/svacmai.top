@@ -185,7 +185,6 @@ const FindWord: FC = () => {
             </p>
             <input
               type="text"
-              id="noLetter"
               value={word.noLetter.filter((letter) => letter !== '').join('')}
               onChange={(e) => {
                 checkLetter(e)
@@ -199,7 +198,6 @@ const FindWord: FC = () => {
             <p className="mb-1 text-neutral-800">letters that have in word.</p>
             <input
               type="text"
-              id="hasLetter"
               value={word.hasLetter.filter((letter) => letter !== '').join('')}
               onChange={(e) => {
                 checkLetter(e)
@@ -214,7 +212,6 @@ const FindWord: FC = () => {
             <input
               type="text"
               maxLength={1}
-              id="letter1"
               value={word.letter1}
               onChange={(e) =>
                 setWord({
@@ -228,7 +225,6 @@ const FindWord: FC = () => {
             <input
               type="text"
               maxLength={1}
-              id="letter2"
               value={word.letter2}
               onChange={(e) =>
                 setWord({
@@ -242,7 +238,6 @@ const FindWord: FC = () => {
             <input
               type="text"
               maxLength={1}
-              id="letter3"
               value={word.letter3}
               onChange={(e) =>
                 setWord({
@@ -255,7 +250,6 @@ const FindWord: FC = () => {
             {/* letter4 */}
             <input
               type="text"
-              id="letter4"
               maxLength={1}
               value={word.letter4}
               onChange={(e) =>
@@ -270,7 +264,6 @@ const FindWord: FC = () => {
             <input
               type="text"
               maxLength={1}
-              id="letter5"
               value={word.letter5}
               onChange={(e) =>
                 setWord({
