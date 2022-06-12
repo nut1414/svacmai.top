@@ -5,7 +5,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "deploy": "yarn && next build"
+    "deploy": "yarn install && yarn cache clean && yarn build"
   },
   "dependencies": {
     "next": "latest",
