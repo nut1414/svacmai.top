@@ -183,7 +183,7 @@ const FindWord: FC = () => {
       noLetter: [],
     })
   }
-  
+
   const deleteHasLetter = () => {
     setWord({
       ...word,
@@ -204,7 +204,7 @@ const FindWord: FC = () => {
           content="Find Word is a game helper that lets you look for words in a wordle."
         />
       </Head>
-      <main className="min-h-screen w-full min-w-full bg-neutral-900 p-4 sm:px-14 px-0 sm:block flex flex-col items-center font-MaiLog text-white">
+      <main className="flex min-h-screen w-full min-w-full flex-col items-center bg-neutral-900 p-4 px-0 font-MaiLog text-white sm:block sm:px-14">
         <h1 className="mb-8 flex w-full items-center justify-center gap-2 text-2xl">
           <span>Find Word</span>
           <HiOutlineInformationCircle className="h-full" />
@@ -218,7 +218,7 @@ const FindWord: FC = () => {
             <p className="mb-1 text-neutral-800">
               Letters that don't exist in the word.
             </p>
-            <div className='flex gap-2'>
+            <div className="flex gap-2">
               <input
                 type="text"
                 value={word.noLetter.filter((letter) => letter !== '').join('')}
