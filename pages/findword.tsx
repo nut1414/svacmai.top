@@ -9,7 +9,11 @@ import {
 } from 'react'
 import words from '../data/wordle/words.json'
 import { WordFormType, MatchWord } from 'types'
-import { RiLoader4Fill } from 'react-icons/ri'
+import {
+  RiLoader4Fill,
+  RiDeleteBin2Fill,
+  RiDeleteBack2Fill,
+} from 'react-icons/ri'
 import { HiOutlineInformationCircle } from 'react-icons/hi'
 
 const FindWord: FC = () => {
@@ -160,6 +164,33 @@ const FindWord: FC = () => {
     setLoading(false)
   }
 
+  const deletePerfectInput = () => {
+    const emptyWord: string = ''
+
+    setWord({
+      ...word,
+      letter1: emptyWord,
+      letter2: emptyWord,
+      letter3: emptyWord,
+      letter4: emptyWord,
+      letter5: emptyWord,
+    })
+  }
+
+  const deleteNoLetter = () => {
+    setWord({
+      ...word,
+      noLetter: [],
+    })
+  }
+  
+  const deleteHasLetter = () => {
+    setWord({
+      ...word,
+      hasLetter: [],
+    })
+  }
+
   useEffect(() => {
     letterInNoLetter()
   }, [word.letter1, word.letter2, word.letter3, word.letter4, word.letter5])
@@ -173,7 +204,7 @@ const FindWord: FC = () => {
           content="Find Word is a game helper that lets you look for words in a wordle."
         />
       </Head>
-      <main className="min-h-screen w-full bg-neutral-900 p-4 px-14 font-MaiLog text-white">
+      <main className="min-h-screen w-full min-w-full bg-neutral-900 p-4 sm:px-14 px-0 sm:block flex flex-col items-center font-MaiLog text-white">
         <h1 className="mb-8 flex w-full items-center justify-center gap-2 text-2xl">
           <span>Find Word</span>
           <HiOutlineInformationCircle className="h-full" />
@@ -187,28 +218,48 @@ const FindWord: FC = () => {
             <p className="mb-1 text-neutral-800">
               Letters that don't exist in the word.
             </p>
-            <input
-              type="text"
-              value={word.noLetter.filter((letter) => letter !== '').join('')}
-              onChange={(e) => {
-                checkLetter(e)
-                checkNoLetterDelete(e)
-              }}
-              className="focus:shadow-outline w-full  appearance-none rounded bg-neutral-700 py-2 px-3 leading-tight text-neutral-300 shadow focus:outline-none"
-            />
+            <div className='flex gap-2'>
+              <input
+                type="text"
+                value={word.noLetter.filter((letter) => letter !== '').join('')}
+                id="noLetter"
+                onChange={(e) => {
+                  checkLetter(e)
+                  checkNoLetterDelete(e)
+                }}
+                className="focus:shadow-outline w-full  appearance-none rounded bg-neutral-700 py-2 px-3 leading-tight text-neutral-300 shadow focus:outline-none"
+              />
+              <div
+                onClick={deleteNoLetter}
+                className="flex w-11 appearance-none items-center rounded bg-neutral-700 py-2 px-3 text-xl text-neutral-300 shadow transition duration-300 ease-in-out hover:bg-neutral-300 hover:text-neutral-800"
+              >
+                <RiDeleteBack2Fill />
+              </div>
+            </div>
           </div>
           {/* NOTE - hasLetter */}
           <div>
             <p className="mb-1 text-neutral-800">Letters found in a word.</p>
-            <input
-              type="text"
-              value={word.hasLetter.filter((letter) => letter !== '').join('')}
-              onChange={(e) => {
-                checkLetter(e)
-                checkHasLetterDelete(e)
-              }}
-              className="focus:shadow-outline w-full  appearance-none rounded bg-neutral-700 py-2 px-3 leading-tight text-neutral-300 shadow focus:outline-none"
-            />
+            <div className="flex gap-2">
+              <input
+                type="text"
+                value={word.hasLetter
+                  .filter((letter) => letter !== '')
+                  .join('')}
+                id="hasLetter"
+                onChange={(e) => {
+                  checkLetter(e)
+                  checkHasLetterDelete(e)
+                }}
+                className="focus:shadow-outline w-full  appearance-none rounded bg-neutral-700 py-2 px-3 leading-tight text-neutral-300 shadow focus:outline-none"
+              />
+              <div
+                onClick={deleteHasLetter}
+                className="flex w-11 appearance-none items-center rounded bg-neutral-700 py-2 px-3 text-xl text-neutral-300 shadow transition duration-300 ease-in-out hover:bg-neutral-300 hover:text-neutral-800"
+              >
+                <RiDeleteBack2Fill />
+              </div>
+            </div>
           </div>
           {/* NOTE - input text */}
           <div className="flex flex-row justify-between gap-2">
@@ -277,6 +328,12 @@ const FindWord: FC = () => {
               }
               className="focus:shadow-outline w-11 appearance-none rounded bg-neutral-700 py-2 px-3 text-xl leading-tight text-neutral-300 shadow focus:outline-none"
             />
+            <div
+              onClick={deletePerfectInput}
+              className="flex w-11 appearance-none items-center rounded bg-neutral-700 py-2 px-3 text-xl text-neutral-300 shadow transition duration-300 ease-in-out hover:bg-neutral-300 hover:text-neutral-800"
+            >
+              <RiDeleteBin2Fill />
+            </div>
           </div>
           {/* NOTE - submit button */}
           <input
