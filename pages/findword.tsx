@@ -185,7 +185,7 @@ const FindWord: FC = () => {
           {/* NOTE - noLetter */}
           <div>
             <p className="mb-1 text-neutral-800">
-              letters that doen't have in word.
+              Letters that don't exist in the word.
             </p>
             <input
               type="text"
@@ -199,7 +199,7 @@ const FindWord: FC = () => {
           </div>
           {/* NOTE - hasLetter */}
           <div>
-            <p className="mb-1 text-neutral-800">letters that have in word.</p>
+            <p className="mb-1 text-neutral-800">Letters found in a word.</p>
             <input
               type="text"
               value={word.hasLetter.filter((letter) => letter !== '').join('')}
