@@ -5,7 +5,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "deploy": "yarn install && yarn cache clean && yarn build ฿฿ touch tmp/restart.txt"
+    "deploy": "yarn install && yarn cache clean && yarn build && touch tmp/restart.txt"
   },
   "dependencies": {
     "next": "latest",
