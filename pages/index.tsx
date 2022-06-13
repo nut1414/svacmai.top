@@ -16,7 +16,7 @@ const Home: FC = () => {
       <NavBar />
       <p>Hello, World</p>
       <div>
-        <p>Deplayment test</p>
+        <p>Deplayment command</p>
       </div>
       {/* useRouter to /findword */}
       <button
