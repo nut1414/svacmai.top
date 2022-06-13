@@ -168,9 +168,13 @@ const FindWord: FC = () => {
     <Fragment>
       <Head>
         <title>Find Word</title>
+        <meta
+          name="description"
+          content="Find Word is a game helper that lets you look for words in a wordle."
+        />
       </Head>
       <main className="min-h-screen w-full bg-neutral-900 p-4 px-14 font-MaiLog text-white">
-        <h1 className="mb-8 flex w-full items-center justify-center text-2xl gap-2">
+        <h1 className="mb-8 flex w-full items-center justify-center gap-2 text-2xl">
           <span>Find Word</span>
           <HiOutlineInformationCircle className="h-full" />
         </h1>
@@ -278,7 +282,7 @@ const FindWord: FC = () => {
           <input
             type="submit"
             value="Check"
-            className="rounded-md bg-neutral-500  p-1 px-2 text-lg text-neutral-900 transition duration-150 ease-in-out hover:bg-neutral-700 hover:text-neutral-400"
+            className="rounded-md bg-neutral-600  p-1 px-2 text-lg text-neutral-300 transition duration-150 ease-in-out hover:bg-neutral-700 hover:text-neutral-200"
           />
         </form>
         {/* NOTE - loading */}
