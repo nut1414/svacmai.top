@@ -36,7 +36,7 @@ const FindWordModal = ({
           <div className="" key={index}>
             <p className="flex items-baseline gap-2">
               <span className="text-lg">Phonetic:</span> {words.phonetic}
-              {words.phonetics[0].audio && (
+              {words.phonetics.length > 0 && (
                 <GoPlay
                   className="cursor-pointer text-neutral-100 hover:text-neutral-400"
                   onClick={() => {
