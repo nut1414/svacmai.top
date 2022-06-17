@@ -6,6 +6,7 @@ import {
   FormEvent,
   ChangeEvent,
   useEffect,
+  SetStateAction,
 } from 'react'
 import words from '../data/wordle/words.json'
 import { WordFormType, MatchWord } from 'types'
@@ -15,10 +16,13 @@ import {
   RiDeleteBack2Fill,
 } from 'react-icons/ri'
 import { HiOutlineInformationCircle } from 'react-icons/hi'
+import FindWordModal from '@components/model/findword'
 
 const FindWord: FC = () => {
   const [matchWord, setMatchWord] = useState<MatchWord>({ wordleWord: [] })
   const [loading, setLoading] = useState(false)
+  const [wordDefinition, setWordDefinition] = useState<string>()
+  const [modal, setModal] = useState(false)
 
   const [word, setWord] = useState<WordFormType>({
     hasLetter: [],
@@ -195,6 +199,30 @@ const FindWord: FC = () => {
     letterInNoLetter()
   }, [word.letter1, word.letter2, word.letter3, word.letter4, word.letter5])
 
+  function disableScrolling() {
+    var x = window.scrollX
+    var y = window.scrollY
+    window.onscroll = function () {
+      window.scrollTo(x, y)
+    }
+  }
+
+  function enableScrolling() {
+    window.onscroll = function () {}
+  }
+
+  const checkScrollAble = () => {
+    if (modal) {
+      disableScrolling()
+    } else {
+      enableScrolling()
+    }
+  }
+
+  useEffect(() => {
+    checkScrollAble()
+  }, [modal])
+
   return (
     <Fragment>
       <Head>
@@ -204,7 +232,10 @@ const FindWord: FC = () => {
           content="Find Word is a game helper that lets you look for words in a wordle."
         />
       </Head>
-      <main className="flex min-h-screen w-full min-w-full flex-col items-center bg-neutral-900 p-4 px-0 font-MaiLog text-white sm:block sm:px-14">
+      <main className="relative flex min-h-screen w-full min-w-full flex-col items-center justify-center bg-neutral-900 p-4 px-0 font-MaiLog text-white sm:px-14">
+        {modal ? (
+          <FindWordModal word={wordDefinition as string} setModal={setModal} />
+        ) : null}
         <h1 className="mb-8 flex w-full items-center justify-center gap-2 text-2xl">
           <span>Find Word</span>
           <HiOutlineInformationCircle className="h-full" />
@@ -342,23 +373,33 @@ const FindWord: FC = () => {
             className="rounded-md bg-neutral-600  p-1 px-2 text-lg text-neutral-300 transition duration-150 ease-in-out hover:bg-neutral-700 hover:text-neutral-200"
           />
         </form>
+        <button onClick={() => setModal(true)}>test</button>
         {/* NOTE - loading */}
         {loading ? (
           <div className="flex items-center justify-center">
             <RiLoader4Fill className="h-1/5 w-1/5 animate-spin fill-neutral-700" />
           </div>
+        ) : null}
+        {/* NOTE - number of results */}
+        {matchWord.wordleWord.length !== 0 ? (
+          <p className="pb-3">found {matchWord.wordleWord.length} words</p>
         ) : (
-          ''
+          <></>
         )}
         {/* NOTE - show word match */}
-        <div className="flex flex-wrap justify-between justify-items-stretch gap-2">
+        <div className="flex h-96 flex-wrap justify-center gap-2 overflow-y-auto">
           {matchWord.wordleWord.map((w) => (
-            <div
+            <button
               key={w}
-              className="flex cursor-default items-center justify-center rounded-md bg-neutral-400 px-2 py-1 text-neutral-700 transition duration-100 ease-in-out hover:bg-neutral-900 hover:text-neutral-300"
+              className="flex h-fit w-20 cursor-default flex-wrap items-center justify-center rounded-md bg-neutral-400 px-2 py-1 text-neutral-700 transition duration-100 ease-in-out hover:bg-neutral-900 hover:text-neutral-300"
+              type="button"
+              onClick={() => {
+                setWordDefinition(w)
+                setModal(true)
+              }}
             >
               {w}
-            </div>
+            </button>
           ))}
         </div>
       </main>
